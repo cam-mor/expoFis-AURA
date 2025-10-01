@@ -1,8 +1,12 @@
 package com.roamoralesgonzalez.aura
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -16,10 +20,20 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.roamoralesgonzalez.aura.ui.theme.AURATheme
 import androidx.compose.animation.core.*
+import com.roamoralesgonzalez.aura.services.FloatingBubbleService
 
 class MainActivity : ComponentActivity() {
+    private val overlayPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (Settings.canDrawOverlays(this)) {
+            startFloatingBubble()
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        checkOverlayPermission()
         setContent {
             AURATheme {
                 Surface(
@@ -30,6 +44,23 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+
+    private fun checkOverlayPermission() {
+        if (!Settings.canDrawOverlays(this)) {
+            val intent = Intent(
+                Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                Uri.parse("package:$packageName")
+            )
+            overlayPermissionLauncher.launch(intent)
+        } else {
+            startFloatingBubble()
+        }
+    }
+
+    private fun startFloatingBubble() {
+        val serviceIntent = Intent(this, FloatingBubbleService::class.java)
+        startService(serviceIntent)
     }
 }
 
