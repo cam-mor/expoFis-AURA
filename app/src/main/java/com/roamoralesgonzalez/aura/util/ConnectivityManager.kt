@@ -38,11 +38,11 @@ class ConnectivityManager(private val context: Context) {
         (context.getSystemService(Context.NOTIFICATION_SERVICE) as android.app.NotificationManager)
             .createNotificationChannel(channel)
     }
-
-    private fun vibrate() {
-        val pattern = longArrayOf(0, 500, 250, 500)
-        vibrator.vibrate(VibrationEffect.createWaveform(pattern, -1))
-    }
+//DESACTIVAMOS ESTO TAMBIEN POR AHORA, AAAAAA (-Camilo)
+    //private fun vibrate() {
+      //  val pattern = longArrayOf(0, 500, 250, 500)
+     //   vibrator.vibrate(VibrationEffect.createWaveform(pattern, -1))
+    //}
 
     fun showWarning(message: String, isUrgent: Boolean = false) {
         val intent = Intent(context, MainActivity::class.java).apply {
@@ -65,7 +65,7 @@ class ConnectivityManager(private val context: Context) {
         if (isUrgent) {
             builder.setCategory(NotificationCompat.CATEGORY_ALARM)
                 .setAutoCancel(false)
-            vibrate()
+            //vibrate()
         }
 
         (context.getSystemService(Context.NOTIFICATION_SERVICE) as android.app.NotificationManager)
@@ -75,7 +75,7 @@ class ConnectivityManager(private val context: Context) {
     fun disableConnectivity() {
         disableWifi()
         disableBluetooth()
-        vibrate()
+        //vibrate()
     }
 
     fun enableConnectivity() {
