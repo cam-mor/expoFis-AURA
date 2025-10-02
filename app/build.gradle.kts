@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.roamoralesgonzalez.aura"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.roamoralesgonzalez.aura"
@@ -78,7 +78,6 @@ dependencies {
 
     // Permissions
     implementation("com.google.accompanist:accompanist-permissions:0.32.0")
-
     // Testing
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

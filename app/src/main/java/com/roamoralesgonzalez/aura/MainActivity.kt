@@ -3,7 +3,7 @@ package com.roamoralesgonzalez.aura
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.net.Uri
+//no por ahora. import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
@@ -28,6 +28,7 @@ import com.roamoralesgonzalez.aura.service.SensorMonitoringService
 import com.roamoralesgonzalez.aura.services.FloatingBubbleService
 import com.roamoralesgonzalez.aura.ui.theme.AURATheme
 import com.roamoralesgonzalez.aura.viewmodel.MainViewModel
+import androidx.core.net.toUri
 
 class MainActivity : ComponentActivity() {
     private lateinit var viewModel: MainViewModel
@@ -109,7 +110,7 @@ class MainActivity : ComponentActivity() {
         if (!Settings.canDrawOverlays(this)) {
             val intent = Intent(
                 Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
-                Uri.parse("package:$packageName")
+                "package:$packageName".toUri()
             )
             overlayPermissionLauncher.launch(intent)
         } else {

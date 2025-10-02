@@ -2,7 +2,7 @@ package com.roamoralesgonzalez.aura.util
 
 import android.content.Context
 import android.content.Intent
-import android.os.VibrationEffect
+// not for now. import android.os.VibrationEffect
 import android.os.Vibrator
 import android.os.VibratorManager
 import android.provider.Settings
@@ -143,7 +143,7 @@ class ConnectivityManager(private val context: Context) {
         }
     }
 
-    private fun hasBluetoothPermission(): Boolean {
+    public fun hasBluetoothPermission(): Boolean {
         return if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
             ContextCompat.checkSelfPermission(
                 context,

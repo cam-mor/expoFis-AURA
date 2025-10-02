@@ -4,7 +4,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.Service
 import android.bluetooth.BluetoothAdapter
-import android.content.Context
+// Not for now. import android.content.Context
 import android.content.Intent
 import android.hardware.Sensor
 import android.hardware.SensorEvent
@@ -35,7 +35,7 @@ class SensorMonitoringService : Service(), SensorEventListener {
     private val serviceJob = SupervisorJob()
     private val serviceScope = CoroutineScope(Dispatchers.Main + serviceJob)
     private lateinit var viewModel: MainViewModel
-    private val viewModelStore = ViewModelStore()
+    // Not for now. private val viewModelStore = ViewModelStore()
 
     // Agregando variables faltantes
     private var lastNotificationTime = 0L
@@ -68,7 +68,7 @@ class SensorMonitoringService : Service(), SensorEventListener {
         sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
         notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
         wifiManager = applicationContext.getSystemService(WIFI_SERVICE) as WifiManager
-        bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+        //fuck you want me to fix this bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
 
         magneticSensor = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD)
         proximitySensor = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY)
@@ -198,10 +198,11 @@ class SensorMonitoringService : Service(), SensorEventListener {
         notificationManager.notify(NOTIFICATION_ID + level, notification)
     }
 
-    private fun disableConnectivity() {
+    public fun disableConnectivity() {
         try {
             // Desactivar WiFi
-            wifiManager.isWifiEnabled = false
+            // desactivamos esto tambien por ahora womp womp wooomp
+            // wifiManager.isWifiEnabled = false
 
             // Desactivar Bluetooth
             // bluetoothAdapter?.disable()
