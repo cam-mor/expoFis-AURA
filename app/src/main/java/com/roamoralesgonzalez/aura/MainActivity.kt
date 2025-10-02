@@ -25,7 +25,7 @@ import com.roamoralesgonzalez.aura.services.FloatingBubbleService
 class MainActivity : ComponentActivity() {
     private val overlayPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
-    ) { result ->
+    ) { _ ->
         if (Settings.canDrawOverlays(this)) {
             startFloatingBubble()
         }

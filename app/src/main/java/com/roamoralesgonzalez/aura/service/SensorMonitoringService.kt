@@ -52,7 +52,30 @@ class SensorMonitoringService : Service(), SensorEventListener {
     }
 
     private fun checkMagneticFieldStrength(strength: Float) {
-        // Lógica para verificar la fuerza del campo magnético y mostrar advertencias si es necesario
+        // Valores aproximados para marcapasos (en microTesla)
+        when {
+            strength > 500f -> {
+                // Nivel de advertencia alto - Campo magnético muy fuerte
+                showWarning(3)
+                disableConnectivity()
+            }
+            strength > 300f -> {
+                // Nivel de advertencia medio
+                showWarning(2)
+            }
+            strength > 100f -> {
+                // Nivel de advertencia bajo
+                showWarning(1)
+            }
+        }
+    }
+
+    private fun showWarning(level: Int) {
+        // TODO: Implementar sistema de notificaciones
+    }
+
+    private fun disableConnectivity() {
+        // TODO: Implementar desactivación de conectividad
     }
 
     private fun checkProximityWarning() {

@@ -1,19 +1,19 @@
 [versions]
 # Plugins
-androidGradlePlugin = "8.9.1"  # Actualizado a la versión instalada
-kotlin = "1.9.0"
+androidGradlePlugin = "8.2.2"  # Versión estable actual de AGP
+kotlin = "1.9.22"  # Última versión estable de Kotlin
 
 # Androidx
 androidxCore = "1.12.0"
-androidxLifecycle = "2.6.2"
-androidxActivity = "1.8.1"
-androidxComposeBom = "2023.10.01"
-androidxComposeCompiler = "1.5.3"
-androidxNavigation = "2.7.5"
+androidxLifecycle = "2.7.0"
+androidxActivity = "1.8.2"
+androidxComposeBom = "2024.02.00"
+androidxComposeCompiler = "1.5.8"
+androidxNavigation = "2.7.7"
 androidxWork = "2.9.0"
 
 # Google Play Services
-playServicesLocation = "21.0.1"
+playServicesLocation = "21.1.0"
 
 # Testing
 junit = "4.13.2"
